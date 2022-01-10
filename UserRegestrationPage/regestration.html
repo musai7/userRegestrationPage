@@ -23,6 +23,11 @@
                 <error-output for="telNo" class="number-error"></error-output>
             </div>
             <div>
+                <label for="pwd">password : </label>
+                <input type="password" id="pwd" name="pwd">
+                <error-output for="password" class="pwd-error"></error-output>
+            </div>
+            <div>
                 <button>Submit</button>
             </div>
         </form>
@@ -42,12 +47,24 @@
             const numbers = document.querySelector('#telNo');
             const numberError = document.querySelector('.number-error');
             telNo.addEventListener('input',function(){
-                let numberRegex = RegExp('^[6-9]{1}[6-9]{9}$');
+                let numberRegex = RegExp('^[1-9]{2}[/s]{0,1}[6-9]{1}[6-9]{9}$');
                 if (numberRegex.test(numbers.value)) {
                     numberError.textContent = "";
                 }else{
                     let erroMsg = "invalide number ";
                     numberError.textContent = erroMsg;
+                }
+            });
+            
+            const password = document.querySelector('#pwd');
+            const pwdError = document.querySelector('.pwd-error');
+            telNo.addEventListener('input',function(){
+                let passwordRegex = RegExp('^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#&()[{}]:;,?/*~$^+=<>]).{8,}$');
+                if (passwordRegex.test(password.value)) {
+                    pwdError.textContent = "";
+                }else{
+                    let erroMsg = "invalide password ";
+                    pwdError.textContent = erroMsg;
                 }
             });
         </script>
