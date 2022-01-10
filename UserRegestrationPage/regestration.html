@@ -18,6 +18,11 @@
                 <input type="email" id="email" name="email">
             </div>
             <div>
+                <label for="telNo">Phone Number : </label>
+                <input type="telNo" id="telNo" name="telNo">
+                <error-output for="telNo" class="number-error"></error-output>
+            </div>
+            <div>
                 <button>Submit</button>
             </div>
         </form>
@@ -31,6 +36,18 @@
                 }else{
                     let erroMsg = "invalide Name";
                     textError.textContent = erroMsg;
+                }
+            });
+
+            const numbers = document.querySelector('#telNo');
+            const numberError = document.querySelector('.number-error');
+            telNo.addEventListener('input',function(){
+                let numberRegex = RegExp('^[6-9]{1}[6-9]{9}$');
+                if (numberRegex.test(numbers.value)) {
+                    numberError.textContent = "";
+                }else{
+                    let erroMsg = "invalide number ";
+                    numberError.textContent = erroMsg;
                 }
             });
         </script>
